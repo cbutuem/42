@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 static	int	n_linhas(char const *e, char f)
@@ -21,7 +19,7 @@ static	int	n_linhas(char const *e, char f)
 
 	i = 0;
 	ii = 0;
-	while ((e[i++] == f) || (e[i] == '\0'))
+	if ((e[i++] == f) || (e[i] == '\0'))
 	{
 		if (f == '\0')
 			return (1);
@@ -30,12 +28,12 @@ static	int	n_linhas(char const *e, char f)
 	{
 		while (e[i] == f)
 			i++;
-		while ((e[i] != f) && (e[i] != '\0'))
-			i++;
-		if ((e[i] == f) && (e[i + 1] != '\0'))
+		if ((e[i] != f) && (e[i] != '\0'))
 			ii++;
+		while (e[i] != f && e[i] != '\0')
+			i++;
 	}
-	return (ii + 2);
+	return (ii + 1);
 }
 
 static int	start_array(char const *s, char c, int i)
@@ -102,25 +100,4 @@ char	**ft_split(char const *s, char c)
 	}
 	str[j - 1] = NULL;
 	return (str);
-}
-int main()
-{
-    char str[100] = "      split       this for   me  !";
-    char **sub;
-    //char texto[20];
-    char c = ' ';
-    int i;
-
-    i = 0;
-    sub = ft_split(str, c);
-    while (*sub != NULL)
-    {
-        printf("%s$", *sub);
-        // strcmp(texto, sub) para se eu quiser manipular essa string
-        // em outras partes do meu programa;
-        sub++;
-    }
-    printf("\nFIM\n");
-
-    return (0);
 }

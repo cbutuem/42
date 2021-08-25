@@ -13,85 +13,45 @@
 #include "libft.h"
 
 static int	ta_mal(int t)
-{	
-	int		i;
-
-	i = 1;
-	if (t < 0)
-		t = t * -1;
-	while (t / 10 != 0)
-	{
-		t = t / 10;
-		i++;
-	}
-	return (i + 1);
-}
-
-static int	rec(int t)
 {
-	int		a;
-	int		b;
 	int		i;
-	int		ii;
 
-	i = 2;
-	ii = 1;
-	b = 0;
-	while (i < ta_mal(t))
+	i = 0;
+	if (t <= 0)
 	{
-		ii = ii * 10;
+		t = t * -1;
 		i++;
 	}
-	if (t < 0)
-		t = t * -1;
-	while (t > 0)
+	while (t)
 	{
-		a = t % 10;
-		b = b + (a * ii);
-		ii /= 10;
 		t /= 10;
+		i++;
 	}
-	return (b);
-}
-
-static int	plus(int n)
-{
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
 	int		i;
-	int		conv;
 	int		back;
 	char	*s;
-	char	*a;
 
-	//i = ta_mal + 1;
-	i = 0;
-	back = rec(n);
-	s = (char *) malloc(ta_mal(n) * sizeof (char));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	back = n;
+	i = ta_mal(back);
+	s = (char *) malloc((i + 1) * sizeof (char));
 	if (s == NULL)
 		return (NULL);
-	//if (n < 0)
-		//s[i] = '-';
-	while (i > 0)
+	if (n < 0)
+		back = back * -1;
+	s[i--] = '\0';
+	while (i >= 0)
 	{
-		if (n < 0)
-		{
-			s[i++] = '-';
-			n = n * -1;
-		}
-		if (n == 0)
-			s[i++] = '0';
-		if (n / 10 != 0)
-			ft_itoa(n / 10);
-		s[i++] = n % 10 + '0';
-	}
-	//s[ta_mal(n) + 1] = '\0';
-			//if (back / 10 != 0)
-			//	back = back / 10;
-	//	s[++i] = back % 10 + '0';
-	//}
-	s[i] = '\0';
+		s[i--] = back % 10 + '0';
+		back = back / 10;
+	}	
+	if (n < 0)
+		s[0] = '-';
 	return (s);
 }
