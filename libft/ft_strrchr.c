@@ -14,10 +14,12 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int			i;
-	char		*a;
+	int				i;
+	char			*a;
+	unsigned char	b;
 
 	a = (char *) s;
+	b = c;
 	i = 0;
 	while (a[i] != '\0')
 		i++;
@@ -25,7 +27,7 @@ char	*ft_strrchr(const char *s, int c)
 	{
 		while (i >= 0)
 		{
-			if (a[i] == c)
+			if (a[i] == b)
 				return (&a[i]);
 			i--;
 		}

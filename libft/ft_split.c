@@ -19,9 +19,9 @@ static	int	n_linhas(char const *e, char f)
 
 	i = 0;
 	ii = 0;
-	if ((e[i++] == f) || (e[i] == '\0'))
+	if ((e[i] == f) || (e[i] == '\0'))
 	{
-		if (f == '\0')
+		if ((f == '\0') || (e[i] == '\0'))
 			return (1);
 	}
 	while (e[i] != '\0')
