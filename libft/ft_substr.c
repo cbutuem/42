@@ -45,11 +45,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
 	c = (char *) malloc(sub_size(s, start, len) * sizeof(char));
 	if (c == NULL)
 		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
 	i = 0;
 	ii = 0;
 	while (s[i] != '\0')
