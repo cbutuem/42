@@ -26,8 +26,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	ii;
 
-	if (!needle)
-		return ((char *)haystack);
 	if (*needle == '\0')
 		return ((char *)haystack);
 	ii = counter(needle);
