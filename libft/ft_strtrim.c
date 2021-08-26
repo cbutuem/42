@@ -12,16 +12,6 @@
 
 #include "libft.h"
 
-static int	tam_str(char const *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
 static int	num_trim_ini(char const *s1, char const *set)
 {	
 	int		i;
@@ -45,7 +35,7 @@ static int	num_trim_final(char const *s1, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*c;
-	int		i;
+	size_t	i;
 	size_t	i_mal;
 
 	if ((!s1) || (!set))

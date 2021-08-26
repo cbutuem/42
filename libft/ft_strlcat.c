@@ -11,42 +11,26 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-
-static int	tam_str(unsigned char *a)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] != '\0')
-		i++;
-	return (i);
-}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t			i;
 	size_t			ii;
-	unsigned char	*a;
-	unsigned char	*b;
 	size_t			maxsize;
 
-	a = (unsigned char *) src;
-	b = (unsigned char *) dst;
 	ii = 0;
 	i = 0;
-	if (dstsize < tam_str(b))
-		maxsize = dstsize + tam_str(a);
+	if (dstsize < ft_strlen(dst))
+		maxsize = dstsize + ft_strlen(src);
 	else
-		maxsize = tam_str(b) + tam_str(a);
+		maxsize = ft_strlen(dst) + ft_strlen(src);
 	if (dstsize != 0)
-		i = tam_str(b);
-	if ((dstsize != 0) && (b != NULL))
+		i = ft_strlen(dst);
+	if ((dstsize != 0) && (dst != NULL) && (dstsize >= ft_strlen(dst)))
 	{
-		while ((i < dstsize - 1) && (a[ii] != '\0'))
-			b[i++] = a[ii++];
-		b[i] = '\0';
+		while ((i < dstsize - 1) && (src[ii] != '\0'))
+			dst[i++] = src[ii++];
+		dst[i] = '\0';
 	}
 	return (maxsize);
 }
