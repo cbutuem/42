@@ -1,6 +1,6 @@
 ### makefile ###
 .c.o:
-	gcc -c -o $@ $<
+	gcc -Wall -Wextra -Werror -c -o $@ $<
 	
 obj = ft_isprint.o ft_putchar_fd.o ft_strlcat.o ft_substr.o ft_atoi.o ft_itoa.o\
  ft_putendl_fd.o ft_strlcpy.o ft_tolower.o ft_bzero.o ft_memccpy.o ft_putnbr_fd.o\
@@ -9,18 +9,18 @@ obj = ft_isprint.o ft_putchar_fd.o ft_strlcat.o ft_substr.o ft_atoi.o ft_itoa.o\
  ft_strchr.o ft_strnstr.o ft_isascii.o ft_memmove.o ft_strdup.o ft_strrchr.o\
  ft_isdigit.o ft_memset.o ft_strjoin.o ft_strtrim.o
 
-NAME = libft.a
+NAME := libft.a
 
-all: ${NAME}
+all: $(NAME)
 
-libft.a: ${obj}
-	ar rcvs libft.a ${obj}
+$(NAME): $(obj)
+	ar rcs libft.a $(obj)
 
 clean:
-	rm -f ${obj}
+	rm -f $(obj)
 
 fclean: clean 
-	rm -f ${NAME}
+	rm -f $(NAME)
 
 re: fclean all 	
 

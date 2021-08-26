@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *str, size_t len);
